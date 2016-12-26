@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="templates/css/base.css" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> 
+  
+  <!--<script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>-->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  {% block meta %} {% endblock %}
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="/">ISAAC</a>
+            <p class="nav text-muted">This is a nav</p>
+    </nav>
+    
+    <div class="row">
+       
+        <div id="map" class="col-md-offset-1 col-md-2">    
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/uploadTest">uploadTester</a></li>
+                <li><a href="/taskMaker">taskMaker</a></li>
+            </ul>
+        </div>
+        <div id="content" class="col-md-7">{% block content %}{% endblock %}</div>
+        
+    </div>
+    
+    <footer class="footer">
+    <div class="container">
+        <p class="text-muted">This is a footer</p>
+    </div>
+</footer>
+</body>
+</html>

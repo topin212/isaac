@@ -1,5 +1,6 @@
 util/
-*.html
 vendor/
 composer.lock
 codeSamples/
+uploads/
+tempTest/

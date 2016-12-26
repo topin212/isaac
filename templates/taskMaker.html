@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+{% block title %}
+Welcome to Isaac!
+{% endblock %}
+
+{% block content%}
+    <p><label for="task_name">Task name: </label><input type="text" id="task_name"/></p>
+    <p><label for="task_annotation">Task annotation: </label><input type="text" id="task_annotation"></p>
+    <p><label for="task_answers">Task answers: </label><input type="text" id="task_answers"></p>
+    <p><label for="task_points">Task points: </label><input type="text" id="task_points"></p>
+    
+    <button class="submit">Submit</button>
+{% endblock %}

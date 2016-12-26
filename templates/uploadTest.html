@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{% block title %}
+Welcome to Isaac!
+{% endblock %}
+
+{% block meta %}
+<script type="text/javascript" src="js/upload.js"></script>
+{% endblock %}
+
+{% block content%}
+    <pre>{{ message }}</pre>
+    <h3 class="task_name">asdasd</h3>
+    <p class="task_annotation">asdasd</p>
+    <hr>
+    <input id="file" type="file" name=""/>
+    <select id="task">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <button class="btn btn-default submitter">Submit</button>
+{% endblock %}
