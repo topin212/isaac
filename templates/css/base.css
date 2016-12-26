@@ -1,6 +1,9 @@
 body{
 	margin-bottom: 60px;
 }
+.row{
+	width: 100%;
+}
 
 .footer{
 	position: absolute;

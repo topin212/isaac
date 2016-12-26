@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__.'/vendor/autoload.php'; 
+    error_reporting(E_ALL);
     Twig_Autoloader::register();
     
     $loader = new Twig_Loader_Filesystem('templates');
@@ -13,15 +14,25 @@
         
     });
     
-    //testing codeExecutor
-    $app->get('/codeTest', function() use($app){
-        $codeExecutor = new Isaac\Core\ScriptExecutor('codeSamples/test.c', 1, __DIR__.'/codeSamples/cache');
-        $codeExecutor->prepare();
-        return '<pre>'.$codeExecutor->execute().'</pre>';
+    $app->get('/uploadTest', function() use($twig){
+        $fileSaver = new Isaac\Util\FileSaver();
+        return $twig->render('uploadTest.html');//'uploadTest.html');//, array('name'=>'test', 'annotation'=>'unknown'));
     });
     
-    $app->get('/uploadTest', function() use($twig){
-        return $twig->render('uploadTest.html', array('meta' => file_get_contents('templates/meta.html')));//'uploadTest.html');//, array('name'=>'test', 'annotation'=>'unknown'));
+    $app->post('/fileSaving', function() use($app){
+        $fileSaver = new Isaac\Util\FileSaver();
+
+        $fileSaver->saveFiles();//$twig->render('uploadTest.html', array('message' => print_r($_FILES)));
+        
+        $codeExecutor = new Isaac\Core\ScriptExecutor($fileSaver->filePath, $fileSaver->taskNumber, 'Hello');
+        $codeExecutor->prepare();
+        $codeExecutor->execute();
+        
+        //$fileSaver->filePath;
+        
+        unlink(Isaac\Core\ScriptExecutor::CACHE_PATH.$codeExecutor->cachedName);
+        unlink($fileSaver->filePath);
+        return $codeExecutor->passed?'passed':'oh shit';
     });
     
     $app->get('/taskMaker', function() use($twig){
